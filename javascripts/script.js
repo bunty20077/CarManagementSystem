@@ -81,11 +81,19 @@ function addCompany() {
 function addDetails() {
 	
 	var date = document.getElementById("date").value;
-	var category = document.getElementById("category").value;
 	var amount = document.getElementById("amount").value;
 	var particulars = document.getElementById("particulars").value;
-
-	
+	var isCategoryChecked = document.getElementsByName("category");
+	/*
+	 * Fix for Git Issue #3
+	 */
+	var category;
+	for (var i = 0, length = isCategoryChecked.length; i < length; i++) {
+	    if (isCategoryChecked[i].checked) {
+	       category = isCategoryChecked[i].value;
+	        break;
+	    }
+	}
 
 	// Returns successful data submission message when the entered information is stored in database.
 	var dataString = 'date=' + date + '&category=' + category + '&amount=' + amount	+ '&particulars=' + particulars;
@@ -174,15 +182,9 @@ function viewTransactions() {
 		        statementTable+='<tr><td>'+obj.data[i].date+'</td><td>'+obj.data[i].particulars+'</td><td>'+obj.data[i].credit+'</td><td>'+obj.data[i].debit+'</td></tr>';
 		                }
 		        document.getElementById("statementTbody").innerHTML = statementTable;
-				//document.getElementById("creditview").innerHTML = credit;
-				//document.getElementById("debitview").innerHTML = debit;
 				document.getElementById("balanceview").innerHTML = obj.balance;
 				document.getElementById("totalcreditview").innerHTML = obj.totcredit;
 				document.getElementById("totaldebitview").innerHTML = obj.totdebit;
-				
-				/*document.getElementById("dateview").innerHTML = displaydate;
-				document.getElementById("particularview").innerHTML = particulars;
-				*/
 			}
 		});
 	
