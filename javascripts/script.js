@@ -174,15 +174,15 @@ function viewTransactions() {
 		        statementTable+='<tr><td>'+obj.data[i].date+'</td><td>'+obj.data[i].particulars+'</td><td>'+obj.data[i].credit+'</td><td>'+obj.data[i].debit+'</td></tr>';
 		                }
 		        document.getElementById("statementTbody").innerHTML = statementTable;
-				
+				//document.getElementById("creditview").innerHTML = credit;
+				//document.getElementById("debitview").innerHTML = debit;
+				document.getElementById("balanceview").innerHTML = obj.balance;
+				document.getElementById("totalcreditview").innerHTML = obj.totcredit;
+				document.getElementById("totaldebitview").innerHTML = obj.totdebit;
 				
 				/*document.getElementById("dateview").innerHTML = displaydate;
 				document.getElementById("particularview").innerHTML = particulars;
-				document.getElementById("creditview").innerHTML = credit;
-				document.getElementById("debitview").innerHTML = debit;
-				document.getElementById("balanceview").innerHTML = obj.balance;
-				document.getElementById("totalcreditview").innerHTML = obj.totcredit;
-				document.getElementById("totaldebitview").innerHTML = obj.totdebit;*/
+				*/
 			}
 		});
 	
