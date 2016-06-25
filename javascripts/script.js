@@ -81,11 +81,19 @@ function addCompany() {
 function addDetails() {
 	
 	var date = document.getElementById("date").value;
-	var category = document.getElementById("category").value;
 	var amount = document.getElementById("amount").value;
 	var particulars = document.getElementById("particulars").value;
-
-	
+	var isCategoryChecked = document.getElementsByName("category");
+	/*
+	 * Fix for Git Issue #3
+	 */
+	var category;
+	for (var i = 0, length = isCategoryChecked.length; i < length; i++) {
+	    if (isCategoryChecked[i].checked) {
+	       category = isCategoryChecked[i].value;
+	        break;
+	    }
+	}
 
 	// Returns successful data submission message when the entered information is stored in database.
 	var dataString = 'date=' + date + '&category=' + category + '&amount=' + amount	+ '&particulars=' + particulars;
@@ -155,37 +163,50 @@ function fetchTotalDistanceRun() {
 };
 
 
-function viewTransactions() {
 
-		$.ajax({
-			type: "POST",
-			url: "RestService/transactions.php",
-			cache: false,
-			success: function(html) {
-				//alert(html);
-				var obj = JSON.parse(html);
-				var displaydate="";
-				var particulars="";
-				var credit="";
-				var debit="";
-				var balance="";				
-				var statementTable = '';
-		        for (i = 0; i < obj.data.length; i++) { 
-		        statementTable+='<tr><td>'+obj.data[i].date+'</td><td>'+obj.data[i].particulars+'</td><td>'+obj.data[i].credit+'</td><td>'+obj.data[i].debit+'</td></tr>';
-		                }
-		        document.getElementById("statementTbody").innerHTML = statementTable;
-				
-				
-				/*document.getElementById("dateview").innerHTML = displaydate;
-				document.getElementById("particularview").innerHTML = particulars;
-				document.getElementById("creditview").innerHTML = credit;
-				document.getElementById("debitview").innerHTML = debit;
-				document.getElementById("balanceview").innerHTML = obj.balance;
-				document.getElementById("totalcreditview").innerHTML = obj.totcredit;
-				document.getElementById("totaldebitview").innerHTML = obj.totdebit;*/
+
+
+function viewReport() {
+
+	$.ajax({
+		type: "POST",
+		url: "RestService/test.php",
+		cache: false,
+		success: function(html) {
+			//alert(html);
+			var obj = JSON.parse(html);
+			var displaydate="";
+			var particulars="";
+			var credit="";
+			var debit="";
+			var balance="";				
+			var statementTable = '';
+			for (i = 0; i < obj.data.length; i++) { 
+				statementTable+='<tr><td>'+obj.data[i].date+'</td><td>'+obj.data[i].particulars+'</td><td>'+obj.data[i].credit+'</td><td>'+obj.data[i].debit+'</td></tr>';
 			}
-		});
+	document.getElementById("statementTbody").innerHTML = statementTable;
+	document.getElementById("balanceview").innerHTML = obj.balance;
+	document.getElementById("totalcreditview").innerHTML = obj.totcredit;
+	document.getElementById("totaldebitview").innerHTML = obj.totdebit;
+		}
+	});
+
+return false;
+};
+
+function notifyUser() {
 	
-	return false;
+		$.ajax({
+		type: "GET",
+		url: "RestService/NotifyService.php",
+		cache: true,
+		success: function(data) {
+			var obj = JSON.parse(data);
+			$.notify(obj);
+		}
+	});
+	
+
+return false;
 };
 
