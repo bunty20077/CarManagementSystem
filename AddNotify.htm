@@ -300,48 +300,46 @@
 						<div class="col-md-6 col-sm-6 col-xs-6">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Add Transactions</h2>
+									<h2>Add Notification</h2>
 									<div class="clearfix"></div>
 								</div>
 								<div class="x_content">
 									<br />
 
-									<form id="adddetails" name="adddetails" data-parsley-validate
+									<form id="addnotifications" name="addnotifications" data-parsley-validate
 										class="form-horizontal form-label-left">
 
 										<div class="form-group ">
-											<label class="control-label " for="date"> Date </label> <input
-												class="form-control" id="date" name="date"
+											<label class="control-label " for="date">Start Date </label> <input
+												class="form-control" id="startdate" name="startdate"
 												placeholder="MM/DD/YYYY" type="date" />
 										</div>
 										<div class="form-group">
-											<label class="control-label requiredField"> Type <span
+											<label class="control-label requiredField"> Title <span
 												class="asteriskField"> * </span>
 											</label>
-											<div class="radio">
-												<label class="radio"> <input
-														name="category" type="radio" value="1" id = "category" /> Income
-												</label>
-										
-												<label class="radio"> <input name="category"
-														type="radio" value="2" id = "category" /> Expenditure
+											<div class="notificationdetails">
+												<label class="details"> 
+														<input class="form-control" id="amount" name="amount"
+													type="text" />
 												</label>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="control-label requiredField" for="amount">
-												Amount <span class="asteriskField"> * </span>
+											<label class="control-label requiredField"> Details <span
+												class="asteriskField"> * </span>
 											</label>
-											<div class="input-group">
-												<div class="input-group-addon">Rs</div>
-												<input class="form-control" id="amount" name="amount"
-													type="text" />
+											<div class="notificationdetails">
+												<label class="details"> 
+														<textarea name="details">Enter text here...</textarea>
+												</label>
 											</div>
 										</div>
+										
 										<div class="form-group ">
-											<label class="control-label " for="text"> Particulars
-											</label> <input class="form-control" id="particulars" name="particulars"
-												type="text" />
+											<label class="control-label " for="date">End Date </label> <input
+												class="form-control" id="enddate" name="enddate"
+												placeholder="MM/DD/YYYY" type="date" />
 										</div>
 										<div class="form-group">
 											<div>
