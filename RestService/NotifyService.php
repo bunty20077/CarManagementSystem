@@ -1,5 +1,5 @@
-
 <?php
+
 if ($_SERVER ['HTTP_HOST'] == 'localhost:8080') {
 	include ("../dbConfig/dbdevdetails.php");
 } else {
@@ -19,13 +19,10 @@ if (! $result) {
 	die ( 'Could not get data: ' . mysql_error () );
 }else{
 	while ( $row = mysql_fetch_array ( $result, MYSQL_ASSOC ) ) {
-	
+
 		$notify_summary = $row ['notify_summary'];
-		//$notify_burge_date = $row['notify_burge_date'];
-		//$today = getdate();
-		//print_r($today);
 		echo json_encode($notify_summary);
 	}
-	
+
 }
 ?>
