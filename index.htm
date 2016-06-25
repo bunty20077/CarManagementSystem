@@ -39,7 +39,7 @@
 </head>
 
 
-<body class="nav-md">
+<body class="nav-md" onload="notifyUser()">
 
   <div class="container body">
 
@@ -394,6 +394,31 @@
 
         </div>
         <!-- /top tiles -->
+        
+         <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="dashboard_graph">
+
+              <div class="row x_title">
+                <div class="col-md-6">
+                  <h3>Network Activities <small>Graph title sub-title</small></h3>
+                </div>
+                <div class="col-md-6">
+                  <div id="reportrange1" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                    
+                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+        </div>     
+        
+        
+        
+        
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -1224,6 +1249,8 @@
   <script type="text/javascript" src="js/maps/jquery-jvectormap-us-aea-en.js"></script>
   <!-- pace -->
   <script src="js/pace/pace.min.js"></script>
+  <script src="js/notify.min.js"></script>
+  <script src="javascripts/script.js"></script>
   <script>
     $(function() {
       $('#world-map-gdp').vectorMap({
@@ -1379,6 +1406,7 @@
   <script>
     NProgress.done();
   </script>
+  
   <!-- /datepicker -->
   <!-- /footer content -->
 </body>
